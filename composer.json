@@ -1,6 +1,6 @@
 {
-    "name": "staabm/password_exposed",
-    "description": "This PHP package provides a `password_exposed` helper function, that uses the haveibeenpwned.com API to check if a password has been exposed in a data breach.",
+    "name": "magentron/password_exposed",
+    "description": "This PHP package provides a `password_exposed` helper function, that uses the haveibeenpwned.com API to check if a password has been exposed in a data breach. (forked from mstaab/password_exposed)",
     "type": "library",
     "license": "LGPL-3.0-only",
     "authors": [
@@ -9,6 +9,9 @@
             "homepage": "https://github.com/staabm/password_exposed/graphs/contributors"
         }
     ],
+    "replace": {
+		"divineomega/password_exposed": "<=3.2.0"
+	},
     "require": {
         "php": "^7.4||^8.0",
         "psr/http-client": "^1.0",
