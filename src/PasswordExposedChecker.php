@@ -2,9 +2,6 @@
 
 namespace DivineOmega\PasswordExposed;
 
-use DivineOmega\DOFileCachePSR6\CacheItemPool;
-use DivineOmega\Psr18GuzzleAdapter\Client;
-use GuzzleHttp\Exception\ConnectException;
 use Http\Discovery\Psr17FactoryDiscovery;
 use ParagonIE\Certainty\Bundle;
 use ParagonIE\Certainty\Fetch;
@@ -15,7 +12,6 @@ use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\UriFactoryInterface;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
-use Symfony\Component\Cache\Psr16Cache;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\HttpClient\Psr18Client;
 
