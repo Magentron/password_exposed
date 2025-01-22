@@ -6,4 +6,6 @@ bundles/*
 !bundles/.
 
 .idea
+.php-cs-fixer.cache
 .phpunit.result.cache
+.psalm-cache

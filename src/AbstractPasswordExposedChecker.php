@@ -32,9 +32,9 @@ abstract class AbstractPasswordExposedChecker implements PasswordExposedCheckerI
      */
     public function passwordExposedByHash(string $hash): string
     {
-        $cache = $this->getCache();
-        $cacheKey = substr($hash, 0, 2).'_'.substr($hash, 2, 3);
-        $body = null;
+        $cache    = $this->getCache();
+        $cacheKey = substr($hash, 0, 2) . '_' . substr($hash, 2, 3);
+        $body     = null;
 
         try {
             $cacheItem = $cache->getItem($cacheKey);
@@ -50,7 +50,6 @@ abstract class AbstractPasswordExposedChecker implements PasswordExposedCheckerI
         // get status from api
         if ($body === null) {
             try {
-                /** @var ResponseInterface $response */
                 $response = $this->makeRequest($hash);
 
                 /** @var string $responseBody */
@@ -114,7 +113,7 @@ abstract class AbstractPasswordExposedChecker implements PasswordExposedCheckerI
      */
     protected function makeRequest(string $hash): ResponseInterface
     {
-        $uri = $this->getUriFactory()->createUri('https://api.pwnedpasswords.com/range/'.substr($hash, 0, 5));
+        $uri     = $this->getUriFactory()->createUri('https://api.pwnedpasswords.com/range/' . substr($hash, 0, 5));
         $request = $this->getRequestFactory()->createRequest('GET', $uri);
 
         return $this->getClient()->sendRequest($request);
@@ -138,7 +137,7 @@ abstract class AbstractPasswordExposedChecker implements PasswordExposedCheckerI
      */
     protected function getPasswordStatus($hash, $responseBody): string
     {
-        $hash = strtoupper($hash);
+        $hash       = strtoupper($hash);
         $hashSuffix = substr($hash, 5);
 
         $lines = array_filter(explode("\r\n", $responseBody));

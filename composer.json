@@ -28,7 +28,8 @@
         "fzaninotto/faker": "^1.7",
         "vimeo/psalm": "^4",
         "kriswallsmith/buzz": "^1.0",
-        "php-coveralls/php-coveralls": "^2.1"
+        "php-coveralls/php-coveralls": "^2.1",
+        "friendsofphp/php-cs-fixer": "^3.9"
     },
     "autoload": {
         "psr-4": {

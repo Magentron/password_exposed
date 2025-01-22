@@ -27,7 +27,7 @@ class CustomInjectionsTest extends TestCase
     public function testCustomLibrary()
     {
         $client = new FileGetContents(Psr17FactoryDiscovery::findResponseFactory());
-        $cache = new FilesystemAdapter('test', 3600, __DIR__.'/../../cache/symfony');
+        $cache  = new FilesystemAdapter('test', 3600, __DIR__ . '/../../cache/symfony');
 
         $passwordExposedChecker = new PasswordExposedChecker($client, $cache);
 
@@ -37,10 +37,10 @@ class CustomInjectionsTest extends TestCase
 
     public function testLocalBundleInjection()
     {
-        $pemFiles = glob(__DIR__.'/../../vendor/paragonie/certainty/data/*.pem');
-        $bundle = new Bundle(end($pemFiles));
+        $pemFiles = glob(__DIR__ . '/../../vendor/paragonie/certainty/data/*.pem');
+        $bundle   = new Bundle(end($pemFiles));
 
-        $cache = new FilesystemAdapter("password-exposed-cache");
+        $cache                  = new FilesystemAdapter("password-exposed-cache");
         $passwordExposedChecker = new PasswordExposedChecker(null, $cache);
         $passwordExposedChecker->setBundle($bundle);
 

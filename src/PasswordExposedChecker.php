@@ -52,11 +52,11 @@ class PasswordExposedChecker extends AbstractPasswordExposedChecker
         ?RequestFactoryInterface $requestFactory = null,
         ?UriFactoryInterface $uriFactory = null
     ) {
-        $this->client = $client;
-        $this->cache = $cache;
-        $this->cacheLifeTime = $cacheLifeTime;
+        $this->client         = $client;
+        $this->cache          = $cache;
+        $this->cacheLifeTime  = $cacheLifeTime;
         $this->requestFactory = $requestFactory;
-        $this->uriFactory = $uriFactory;
+        $this->uriFactory     = $uriFactory;
     }
 
     /**
@@ -174,6 +174,8 @@ class PasswordExposedChecker extends AbstractPasswordExposedChecker
 
     /**
      * @param Bundle $bundle
+     *
+     * @psalm-api
      */
     public function setBundle(Bundle $bundle): void
     {
@@ -200,16 +202,16 @@ class PasswordExposedChecker extends AbstractPasswordExposedChecker
      */
     protected function getBundleFromCertainty(): Bundle
     {
-        $ourCertaintyDataDir = __DIR__.'/../bundles';
+        $ourCertaintyDataDir = __DIR__ . '/../bundles';
 
-        if (!is_writable($ourCertaintyDataDir)) {
+        if (! is_writable($ourCertaintyDataDir)) {
 
             // If we can't write to the our Certainty data directory, just
             // use the latest bundle from the Certainty package.
             return (new Fetch($ourCertaintyDataDir))->getLatestBundle();
         }
 
-        if (PHP_INT_SIZE === 4 && !extension_loaded('sodium')) {
+        if (PHP_INT_SIZE === 4 && ! extension_loaded('sodium')) {
 
             // If the platform would run verification checks slowly, use the
             // latest bundle from the Certainty package and disable verification.
